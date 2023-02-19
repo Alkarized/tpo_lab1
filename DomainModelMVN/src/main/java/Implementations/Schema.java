@@ -14,8 +14,7 @@ public class Schema implements IMaterialized {
     private String message;
 
     public Schema() {
-        this.currentState = State.DEFAULT;
-        this.message = ". . .";
+        setCurrentState(State.DEFAULT);
     }
 
     public State getCurrentState() {
@@ -30,6 +29,8 @@ public class Schema implements IMaterialized {
             case DESPAIR -> message = "Totally not worth it...";
             case DISGUST -> message = "It's disgusting!";
             case COLD_CONTEMPT -> message = "Miserable...";
+            case FUN -> message = "Hahaha!";
+            case BORED -> message = "Meh...";
         }
     }
 
@@ -59,7 +60,7 @@ public class Schema implements IMaterialized {
     }
 
     public State compareMaterials(Material first, Material second) {
-        if (Objects.requireNonNull(this.currentState) == State.DISGUST) {
+        if (Objects.requireNonNull(this.currentState) == State.DOUBT) {
             setCurrentState(State.FUN);
         }
         System.out.printf("[%s] compared: [%s] vs [%s]. Result: %s.\n", this.getTargetName(), first, second,
