@@ -35,8 +35,6 @@ public class Robot implements INamed, IMaterialized {
     public State watch(ITargetable target) {
         if (target.getTargetName().equals("She")) {
             this.currentState = State.COLD_CONTEMPT;
-        } else {
-            this.currentState = State.DEFAULT;
         }
         System.out.printf("[%s], being in state of [%s], watched after [%s].\n", this.getTargetName(), this.currentState, target.getTargetName());
         return this.currentState;
@@ -44,7 +42,9 @@ public class Robot implements INamed, IMaterialized {
 
     public State useSchemas(Idea idea) {
         if (this.logicalSchemas.length == 0) {
-            this.currentState = State.DEFAULT;
+            return this.currentState;
+        }
+        if (this.currentState != State.COLD_CONTEMPT) {
             return this.currentState;
         }
         if (idea.getContent() == IdeaContent.PHYSICAL_ABUSE) {
@@ -78,7 +78,6 @@ public class Robot implements INamed, IMaterialized {
             this.currentState = State.DESPAIR;
             return this.currentState;
         }
-        this.currentState = State.DEFAULT;
         return this.currentState;
     }
 
