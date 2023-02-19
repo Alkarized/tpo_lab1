@@ -1,10 +1,19 @@
+package Implementations.Idea;
+
+import Abstractions.ITargetable;
+import Enums.IdeaContent;
+
 public class TargetedIdea extends Idea{
 
     private final ITargetable target;
 
-    public TargetedIdea(String content, ITargetable target) {
+    public TargetedIdea(IdeaContent content, ITargetable target) {
         super(content);
         this.target = target;
+    }
+
+    public ITargetable getTarget() {
+        return target;
     }
 
     @Override

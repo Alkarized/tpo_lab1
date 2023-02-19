@@ -1,11 +1,16 @@
-public class Idea implements ITargetable {
-    private final String content;
+package Implementations.Idea;
 
-    public Idea(String content) {
+import Abstractions.ITargetable;
+import Enums.IdeaContent;
+
+public class Idea implements ITargetable {
+    private final IdeaContent content;
+
+    public Idea(IdeaContent content) {
         this.content = content;
     }
 
-    public String toString() {
+    public IdeaContent getContent() {
         return content;
     }
 
