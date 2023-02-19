@@ -1,7 +1,6 @@
 package Implementations;
 
 import Abstractions.IMaterialized;
-import Abstractions.ITargetable;
 import Enums.Material;
 
 public class Door implements IMaterialized {
@@ -18,6 +17,6 @@ public class Door implements IMaterialized {
 
     @Override
     public String getTargetName() {
-        return "The Implementations.Door[" + this.hashCode() + "]";
+        return "The Implementations.Implementations.Door[" + this.hashCode() + "]";
     }
 }

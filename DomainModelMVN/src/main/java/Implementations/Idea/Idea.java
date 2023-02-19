@@ -16,6 +16,6 @@ public class Idea implements ITargetable {
 
     @Override
     public String getTargetName() {
-        return "Idea content: [" + this.content + "]";
+        return "Implementations.Idea.Idea content: [" + this.content + "]";
     }
 }

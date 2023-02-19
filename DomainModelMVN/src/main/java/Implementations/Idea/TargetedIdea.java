@@ -18,6 +18,6 @@ public class TargetedIdea extends Idea{
 
     @Override
     public String getTargetName() {
-        return super.getTargetName() + ", Idea target: [" + this.target.getTargetName() + "]";
+        return super.getTargetName() + ", Implementations.Idea.Idea target: [" + this.target.getTargetName() + "]";
     }
 }
