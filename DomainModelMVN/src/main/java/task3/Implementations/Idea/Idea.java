@@ -1,7 +1,7 @@
-package Implementations.Idea;
+package task3.Implementations.Idea;
 
-import Abstractions.ITargetable;
-import Enums.IdeaContent;
+import task3.Abstractions.ITargetable;
+import task3.Enums.IdeaContent;
 
 public class Idea implements ITargetable {
     private final IdeaContent content;
@@ -16,6 +16,6 @@ public class Idea implements ITargetable {
 
     @Override
     public String getTargetName() {
-        return "Implementations.Idea.Idea content: [" + this.content + "]";
+        return "task3.Implementations.Idea.Idea content: [" + this.content + "]";
     }
 }

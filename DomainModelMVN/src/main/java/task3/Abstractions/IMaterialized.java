@@ -1,7 +1,6 @@
-package Abstractions;
+package task3.Abstractions;
 
-import Abstractions.ITargetable;
-import Enums.Material;
+import task3.Enums.Material;
 
 public interface IMaterialized extends ITargetable {
     Material getMaterial();

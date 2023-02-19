@@ -14,7 +14,7 @@
 
 ---
 
-1. Функция arcsin(x)
+1. Функция task1(x)
 2. Программный модуль для работы с красно-черным деревом (http://www.cs.usfca.edu/~galles/visualization/RedBlack.html)
 3. Описание предметной области:
 ~~~ 

@@ -1,9 +1,9 @@
-package Implementations;
+package task3.Implementations;
 
-import Abstractions.IMaterialized;
-import Abstractions.ITargetable;
-import Enums.Material;
-import Enums.State;
+import task3.Abstractions.IMaterialized;
+import task3.Abstractions.ITargetable;
+import task3.Enums.Material;
+import task3.Enums.State;
 
 import java.util.Objects;
 

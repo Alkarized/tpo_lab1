@@ -1,13 +1,13 @@
-package Implementations;
+package task3.Implementations;
 
-import Abstractions.IMaterialized;
-import Enums.Material;
+import task3.Abstractions.IMaterialized;
+import task3.Enums.Material;
 
 public class HumanBrain implements IMaterialized {
 
     @Override
     public String getTargetName() {
-        return "Implementations.HumanBrain[" + hashCode() + "]";
+        return "task3.Implementations.HumanBrain[" + hashCode() + "]";
     }
 
     @Override

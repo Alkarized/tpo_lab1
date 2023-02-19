@@ -1,7 +1,7 @@
-package Implementations;
+package task3.Implementations;
 
-import Abstractions.IMaterialized;
-import Enums.Material;
+import task3.Abstractions.IMaterialized;
+import task3.Enums.Material;
 
 public class Door implements IMaterialized {
 
@@ -17,6 +17,6 @@ public class Door implements IMaterialized {
 
     @Override
     public String getTargetName() {
-        return "The Implementations.Implementations.Door[" + this.hashCode() + "]";
+        return "The task3.Implementations.task3.Implementations.Door[" + this.hashCode() + "]";
     }
 }

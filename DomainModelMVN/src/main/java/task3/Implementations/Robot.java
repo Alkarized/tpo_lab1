@@ -1,13 +1,13 @@
-package Implementations;
+package task3.Implementations;
 
-import Abstractions.IMaterialized;
-import Abstractions.INamed;
-import Abstractions.ITargetable;
-import Enums.IdeaContent;
-import Enums.Material;
-import Enums.State;
-import Implementations.Idea.Idea;
-import Implementations.Idea.TargetedIdea;
+import task3.Abstractions.IMaterialized;
+import task3.Abstractions.INamed;
+import task3.Abstractions.ITargetable;
+import task3.Enums.IdeaContent;
+import task3.Enums.Material;
+import task3.Enums.State;
+import task3.Implementations.Idea.Idea;
+import task3.Implementations.Idea.TargetedIdea;
 
 public class Robot implements INamed, IMaterialized {
 

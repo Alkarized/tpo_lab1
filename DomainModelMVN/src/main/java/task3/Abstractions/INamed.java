@@ -1,6 +1,4 @@
-package Abstractions;
-
-import Abstractions.ITargetable;
+package task3.Abstractions;
 
 public interface INamed extends ITargetable {
 

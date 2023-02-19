@@ -1,7 +1,7 @@
-package Implementations.Idea;
+package task3.Implementations.Idea;
 
-import Abstractions.ITargetable;
-import Enums.IdeaContent;
+import task3.Abstractions.ITargetable;
+import task3.Enums.IdeaContent;
 
 public class TargetedIdea extends Idea{
 
@@ -18,6 +18,6 @@ public class TargetedIdea extends Idea{
 
     @Override
     public String getTargetName() {
-        return super.getTargetName() + ", Implementations.Idea.Idea target: [" + this.target.getTargetName() + "]";
+        return super.getTargetName() + ", task3.Implementations.Idea.Idea target: [" + this.target.getTargetName() + "]";
     }
 }
