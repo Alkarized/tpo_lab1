@@ -429,11 +429,10 @@ public class RedBlackTree {
     }
 
     // print the tree structure on the screen
-/*
     public void prettyPrint() {
         printHelper(this.root, "", true);
     }
-*/
+
 
 /*    public static void main(String [] args) throws IllegalAccessException {
         RedBlackTree bst = new RedBlackTree();

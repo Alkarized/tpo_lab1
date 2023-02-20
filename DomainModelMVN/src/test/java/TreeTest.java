@@ -72,12 +72,17 @@ public class TreeTest {
         rbt.insert(12);
         rbt.insert(54);
         rbt.insert(-123);
+        rbt.insert(654);
         rbt.insert(512);
         rbt.insert(-324);
         rbt.insert(-12);
+        rbt.insert(61);
+
         rbt.insert(58);
         rbt.insert(78);
         rbt.insert(-65);
+        rbt.prettyPrint();
+        System.out.println(rbt.inorder());
         Assertions.assertEquals(input, rbt.searchTree(input).getData());
 
     }
