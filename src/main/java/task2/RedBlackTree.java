@@ -12,14 +12,14 @@ public class RedBlackTree {
         if (node != TNULL) {
             String str1 = inOrderHelper(node.getLeft());
             String str2 = node.getData() + " ";
-            String str3 = inOrderHelper(node.getRight());
+            final String str3 = inOrderHelper(node.getRight());
             return str1 + str2 + str3;
         }
         return "";
     }
 
 
-    private Node searchTreeHelper(Node node, int key) {
+    private Node searchTreeHelper(final Node node, final int key) {
         if (node == TNULL || key == node.getData()) {
             return node;
         }
@@ -33,8 +33,8 @@ public class RedBlackTree {
 
     private void fixDelete(Node x) {
         Node s;
-        while (x != root && !x.isColor()) {
-            if (x == x.getParent().getLeft()) {
+        while (!x.equals(root) && !x.isColor()) {
+            if (x.equals(x.getParent().getLeft())) {
                 s = x.getParent().getRight();
 
 
