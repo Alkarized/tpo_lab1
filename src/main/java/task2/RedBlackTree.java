@@ -33,18 +33,18 @@ public class RedBlackTree {
 
     private void fixDelete(Node x) {
         Node s;
-        while (x != root && !x.getColor()) {
+        while (x != root && !x.isColor()) {
             if (x == x.getParent().getLeft()) {
                 s = x.getParent().getRight();
 
 
-                if (!s.getLeft().getColor() && !s.getRight().getColor()) {
+                if (!s.getLeft().isColor() && !s.getRight().isColor()) {
                     s.setColor(true);
                     x = x.getParent();
                 } else {
 
 
-                    s.setColor(x.getParent().getColor());
+                    s.setColor(x.getParent().isColor());
                     x.getParent().setColor(false);
                     s.getRight().setColor(false);
                     leftRotate(x.getParent());
@@ -52,7 +52,7 @@ public class RedBlackTree {
                 }
             } else {
                 s = x.getParent().getLeft();
-                if (s.getColor()) {
+                if (s.isColor()) {
                     // case 3.1
                     s.setColor(false);
                     x.getParent().setColor(true);
@@ -60,13 +60,13 @@ public class RedBlackTree {
                     s = x.getParent().getLeft();
                 }
 
-                if (!s.getRight().getColor()  && !s.getRight().getColor()) {
+                if (!s.getRight().isColor()  && !s.getRight().isColor()) {
                     s.setColor(true);
                     x = x.getParent();
                 } else {
 
 
-                    s.setColor( x.getParent().getColor());
+                    s.setColor( x.getParent().isColor());
                     x.getParent().setColor(false);
                     s.getLeft().setColor(false);
                     rightRotate(x.getParent());
@@ -110,7 +110,7 @@ public class RedBlackTree {
         }
         Node x;
         Node y = z;
-        boolean yOriginalColor = y.getColor();
+        boolean yOriginalColor = y.isColor();
         if (z.getLeft() == TNULL) {
             x = z.getRight();
             rbTransplant(z, z.getRight());
@@ -119,7 +119,7 @@ public class RedBlackTree {
             rbTransplant(z, z.getLeft());
         } else {
             y = minimum(z.getRight());
-            yOriginalColor = y.getColor();
+            yOriginalColor = y.isColor();
             x = y.getRight();
             if (y.getParent().equals(z)) {
                 x.setParent(y);
@@ -132,7 +132,7 @@ public class RedBlackTree {
             rbTransplant(z, y);
             y.setLeft(z.getLeft());
             y.getLeft().setParent(y);
-            y.setColor(z.getColor());
+            y.setColor(z.isColor());
         }
         if (!yOriginalColor){
             fixDelete(x);
@@ -142,10 +142,10 @@ public class RedBlackTree {
     // fix the red-black tree
     private void fixInsert(Node k){
         Node u;
-        while (k.getParent().getColor()) {
+        while (k.getParent().isColor()) {
             if (k.getParent().equals(k.getParent().getParent().getRight())) {
                 u = k.getParent().getParent().getLeft(); // uncle
-                if (u.getColor()) {
+                if (u.isColor()) {
                     u.setColor(false);
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
@@ -162,7 +162,7 @@ public class RedBlackTree {
             } else {
                 u = k.getParent().getParent().getRight(); // uncle
 
-                if (u.getColor()) {
+                if (u.isColor()) {
                     u.setColor(false);
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
@@ -192,7 +192,7 @@ public class RedBlackTree {
                 indent += "|    ";
             }
 
-            final String sColor = root.getColor()?"RED":"BLACK";
+            final String sColor = root.isColor()?"RED":"BLACK";
             System.out.println(root.getData() + "(" + sColor + ")");
             printHelper(root.getLeft(), indent, false);
             printHelper(root.getRight(), indent, true);
