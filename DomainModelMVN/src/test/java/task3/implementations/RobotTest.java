@@ -1,3 +1,5 @@
+package task3.implementations;
+
 import task3.Abstractions.INamed;
 import task3.Enums.IdeaContent;
 import task3.Enums.Material;
