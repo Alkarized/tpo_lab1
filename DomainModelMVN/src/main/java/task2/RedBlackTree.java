@@ -8,29 +8,31 @@ public class RedBlackTree {
         return TNULL;
     }
 
-    private void preOrderHelper(Node node) {
+/*    private void preOrderHelper(Node node) {
         if (node != TNULL) {
             System.out.print(node.getData() + " ");
             preOrderHelper(node.getLeft());
             preOrderHelper(node.getRight());
         }
-    }
+    }*/
 
-    private void inOrderHelper(Node node) {
+    private String inOrderHelper(Node node) {
         if (node != TNULL) {
-            inOrderHelper(node.getLeft());
-            System.out.print(node.getData() + " ");
-            inOrderHelper(node.getRight());
+            String str1 = inOrderHelper(node.getLeft());
+            String str2 = node.getData() + " ";
+            String str3 = inOrderHelper(node.getRight());
+            return str1 + str2 + str3;
         }
+        return "";
     }
 
-    private void postOrderHelper(Node node) {
+/*    private void postOrderHelper(Node node) {
         if (node != TNULL) {
             postOrderHelper(node.getLeft());
             postOrderHelper(node.getRight());
             System.out.print(node.getData() + " ");
         }
-    }
+    }*/
 
     private Node searchTreeHelper(Node node, int key) {
         if (node == TNULL || key == node.getData()) {
@@ -125,7 +127,7 @@ public class RedBlackTree {
         v.setParent(u.getParent());
     }
 
-    private void deleteNodeHelper(Node node, int key) {
+    private void deleteNodeHelper(Node node, int key) throws IllegalAccessException {
         // find the node containing key
         Node z = TNULL;
         Node x, y;
@@ -142,8 +144,8 @@ public class RedBlackTree {
         }
 
         if (z == TNULL) {
-            System.out.println("Couldn't find key in the tree");
-            return;
+            throw new IllegalAccessException("Couldn't find key in the tree");
+
         }
 
         y = z;
@@ -256,21 +258,21 @@ public class RedBlackTree {
 
     // Pre-Order traversal
     // Node.Left Subtree.Right Subtree
-    public void preorder() {
+/*    public void preorder() {
         preOrderHelper(this.root);
-    }
+    }*/
 
     // In-Order traversal
     // Left Subtree . Node . Right Subtree
-    public void inorder() {
-        inOrderHelper(this.root);
+    public String inorder() {
+        return inOrderHelper(this.root);
     }
 
     // Post-Order traversal
     // Left Subtree . Right Subtree . Node
-    public void postorder() {
+    /*public void postorder() {
         postOrderHelper(this.root);
-    }
+    }*/
 
     // search the tree for the key k
     // and return the corresponding node
@@ -422,18 +424,19 @@ public class RedBlackTree {
     }
 
     // delete the node from the tree
-    public void deleteNode(int data) {
+    public void deleteNode(int data) throws IllegalAccessException {
         deleteNodeHelper(this.root, data);
     }
 
     // print the tree structure on the screen
+/*
     public void prettyPrint() {
         printHelper(this.root, "", true);
     }
+*/
 
-    public static void main(String [] args){
+/*    public static void main(String [] args) throws IllegalAccessException {
         RedBlackTree bst = new RedBlackTree();
-        bst.insert(8);
         bst.insert(18);
         bst.insert(5);
         bst.insert(15);
@@ -441,12 +444,13 @@ public class RedBlackTree {
         bst.insert(25);
         bst.insert(40);
         bst.insert(80);
+        bst.insert(80);
         bst.deleteNode(25);
         Node node = bst.searchTree(9);
         System.out.println(bst.getTNULL() == node);
         System.out.println("НОДААААААА!!" + node.getData());
-        //bst.prettyPrint();
-    }
+        System.out.println(bst.inorder());
+    }*/
 
 //
 //    private void rotate_left(Node node) {
