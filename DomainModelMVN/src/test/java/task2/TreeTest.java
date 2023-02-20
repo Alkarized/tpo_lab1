@@ -105,4 +105,28 @@ public class TreeTest {
 
         Assertions.assertEquals(rbt.searchTree(input).getData(), input);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {42, 12, 54, -123, 654, 512, -324, -12, 61, 58, 78, -65})
+    public void findDeleteInManyElementTest(Integer input) throws IllegalAccessException {
+        rbt.insert(42);
+        rbt.insert(12);
+        rbt.insert(54);
+        rbt.insert(-123);
+        rbt.insert(654);
+        rbt.insert(512);
+        rbt.insert(-324);
+        rbt.insert(-12);
+        rbt.insert(61);
+        rbt.insert(58);
+        rbt.insert(78);
+        rbt.insert(-65);
+
+        rbt.deleteNode(input);
+        rbt.prettyPrint();
+        System.out.println(rbt.inorder());
+
+        Assertions.assertEquals(rbt.searchTree(input), rbt.getTNULL());
+
+    }
 }

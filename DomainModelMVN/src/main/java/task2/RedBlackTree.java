@@ -52,26 +52,26 @@ public class RedBlackTree {
         while (x != root && !x.getColor()) {
             if (x == x.getParent().getLeft()) {
                 s = x.getParent().getRight();
-                if (s.getColor()) {
-                    // case 3.1
-                    s.setColor(false);
-                    x.getParent().setColor(true);
-                    leftRotate(x.getParent());
-                    s = x.getParent().getRight();
-                }
+//                if (s.getColor()) {
+//                    // case 3.1
+//                    s.setColor(false);
+//                    x.getParent().setColor(true);
+//                    leftRotate(x.getParent());
+//                    s = x.getParent().getRight();
+//                }
 
                 if (!s.getLeft().getColor() && !s.getRight().getColor()) {
                     // case 3.2
                     s.setColor(true);
                     x = x.getParent();
                 } else {
-                    if (!s.getRight().getColor()) {
-                        // case 3.3
-                        s.getLeft().setColor(false);
-                        s.setColor(true);
-                        rightRotate(s);
-                        s = x.getParent().getRight();
-                    }
+//                    if (!s.getRight().getColor()) {
+//                        // case 3.3
+//                        s.getLeft().setColor(false);
+//                        s.setColor(true);
+//                        rightRotate(s);
+//                        s = x.getParent().getRight();
+//                    }
 
                     // case 3.4
                     s.setColor(x.getParent().getColor());
@@ -95,13 +95,13 @@ public class RedBlackTree {
                     s.setColor(true);
                     x = x.getParent();
                 } else {
-                    if (s.getLeft().getColor()) {
-                        // case 3.3
-                        s.getRight().setColor(false);
-                        s.setColor(true);
-                        leftRotate(s);
-                        s = x.getParent().getLeft();
-                    }
+//                    if (s.getLeft().getColor()) {
+//                        // case 3.3
+//                        s.getRight().setColor(false);
+//                        s.setColor(true);
+//                        leftRotate(s);
+//                        s = x.getParent().getLeft();
+//                    }
 
                     // case 3.4
                     s.setColor( x.getParent().getColor());
@@ -211,11 +211,11 @@ public class RedBlackTree {
                     k.getParent().getParent().setColor(true);
                     k = k.getParent().getParent();
                 } else {
-                    if (k == k.getParent().getRight()) {
-                        // mirror case 3.2.2
-                        k = k.getParent();
-                        leftRotate(k);
-                    }
+//                    if (k == k.getParent().getRight()) {
+//                        // mirror case 3.2.2
+//                        k = k.getParent();
+//                        leftRotate(k);
+//                    }
                     // mirror case 3.2.1
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
@@ -289,49 +289,49 @@ public class RedBlackTree {
     }
 
     // find the node with the maximum key
-    public Node maximum(Node node) {
-        while (node.getRight() != TNULL) {
-            node = node.getRight();
-        }
-        return node;
-    }
+//    public Node maximum(Node node) {
+//        while (node.getRight() != TNULL) {
+//            node = node.getRight();
+//        }
+//        return node;
+//    }
 
     // find the successor of a given node
-    public Node successor(Node x) {
-        // if the right subtree is not null,
-        // the successor is the leftmost node in the
-        // right subtree
-        if (x.getRight() != TNULL) {
-            return minimum(x.getRight());
-        }
+//    public Node successor(Node x) {
+//        // if the right subtree is not null,
+//        // the successor is the leftmost node in the
+//        // right subtree
+//        if (x.getRight() != TNULL) {
+//            return minimum(x.getRight());
+//        }
+//
+//        // else it is the lowest ancestor of x whose
+//        // left child is also an ancestor of x.
+//        Node y = x.getParent();
+//        while (y != TNULL && x == y.getRight()) {
+//            x = y;
+//            y = y.getParent();
+//        }
+//        return y;
+//    }
 
-        // else it is the lowest ancestor of x whose
-        // left child is also an ancestor of x.
-        Node y = x.getParent();
-        while (y != TNULL && x == y.getRight()) {
-            x = y;
-            y = y.getParent();
-        }
-        return y;
-    }
-
-    // find the predecessor of a given node
-    public Node predecessor(Node x) {
-        // if the left subtree is not null,
-        // the predecessor is the rightmost node in the
-        // left subtree
-        if (x.getLeft() != TNULL) {
-            return maximum(x.getLeft());
-        }
-
-        Node y = x.getParent();
-        while (y != TNULL && x == y.getLeft()) {
-            x = y;
-            y = y.getParent();
-        }
-
-        return y;
-    }
+//    // find the predecessor of a given node
+//    public Node predecessor(Node x) {
+//        // if the left subtree is not null,
+//        // the predecessor is the rightmost node in the
+//        // left subtree
+//        if (x.getLeft() != TNULL) {
+//            return maximum(x.getLeft());
+//        }
+//
+//        Node y = x.getParent();
+//        while (y != TNULL && x == y.getLeft()) {
+//            x = y;
+//            y = y.getParent();
+//        }
+//
+//        return y;
+//    }
 
     // rotate left at node x
     public void leftRotate(Node x) {
