@@ -47,7 +47,7 @@ public class Node {
         return data;
     }
 
-    public Node getGrandparent (){
+/*    public Node getGrandparent (){
         if ((getParent() != null)){
             return getParent().getParent();
         } else{
@@ -73,7 +73,7 @@ public class Node {
             return getParent().getRight();
         else
             return getParent().getLeft();
-    }
+    }*/
 
 
 
