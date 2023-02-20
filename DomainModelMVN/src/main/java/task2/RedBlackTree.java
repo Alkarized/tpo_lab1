@@ -4,6 +4,10 @@ public class RedBlackTree {
     private Node root;
     private Node TNULL;
 
+    public Node getTNULL() {
+        return TNULL;
+    }
+
     private void preOrderHelper(Node node) {
         if (node != TNULL) {
             System.out.print(node.getData() + " ");
@@ -36,6 +40,7 @@ public class RedBlackTree {
         if (key < node.getData()) {
             return searchTreeHelper(node.getLeft(), key);
         }
+
         return searchTreeHelper(node.getRight(), key);
     }
 
@@ -437,7 +442,10 @@ public class RedBlackTree {
         bst.insert(40);
         bst.insert(80);
         bst.deleteNode(25);
-        bst.prettyPrint();
+        Node node = bst.searchTree(9);
+        System.out.println(bst.getTNULL() == node);
+        System.out.println("НОДААААААА!!" + node.getData());
+        //bst.prettyPrint();
     }
 
 //
