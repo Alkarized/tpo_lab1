@@ -2,8 +2,10 @@ package task1;
 
 public class MathArc {
 
-    public double arcsin(double x) {
-        if (x > 1 || x < -1) return Double.NaN;
+    public double arcsin(final double x) {
+        if (x > 1 || x < -1) {
+            return Double.NaN;
+        }
 
         double ans = x;
         double temp = 1;
@@ -19,8 +21,8 @@ public class MathArc {
 
             //System.out.printf("after:: top - %s, bot - %s, count - %s\n", top, bot, count);
 
-            top *= (2 * count - 1);
-            bot *= (2 * count);
+            top *= 2 * count - 1;
+            bot *= 2 * count;
             ans += temp;
             count++;
         }

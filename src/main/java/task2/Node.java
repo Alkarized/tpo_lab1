@@ -7,7 +7,7 @@ public class Node {
     private Node parent;
     private boolean color;
 
-    public void setData(int data) {
+    public void setData(final int data) {
         this.data = data;
     }
 
@@ -15,7 +15,7 @@ public class Node {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(final Node left) {
         this.left = left;
     }
 
@@ -23,7 +23,7 @@ public class Node {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(final Node right) {
         this.right = right;
     }
 
@@ -31,21 +31,23 @@ public class Node {
         return parent;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(final Node parent) {
         this.parent = parent;
     }
 
-    public boolean getColor() {
+    public boolean isColor() {
         return color;
     }
 
-    public void setColor(boolean color) {
+    public void setColor(final boolean color) {
         this.color = color;
     }
 
     public int getData() {
         return data;
     }
+
+
 
 /*    public Node getGrandparent (){
         if ((getParent() != null)){
