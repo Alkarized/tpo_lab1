@@ -9,7 +9,7 @@ public class RedBlackTree {
     }
 
     private String inOrderHelper(final Node node) {
-        if (node.equals(tNull)) {
+        if (!node.equals(tNull)) {
             final String str1 = inOrderHelper(node.getLeft());
             final String str2 = node.getData() + " ";
             final String str3 = inOrderHelper(node.getRight());
