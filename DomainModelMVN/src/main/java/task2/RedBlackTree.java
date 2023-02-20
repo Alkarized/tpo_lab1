@@ -8,14 +8,6 @@ public class RedBlackTree {
         return TNULL;
     }
 
-/*    private void preOrderHelper(Node node) {
-        if (node != TNULL) {
-            System.out.print(node.getData() + " ");
-            preOrderHelper(node.getLeft());
-            preOrderHelper(node.getRight());
-        }
-    }*/
-
     private String inOrderHelper(Node node) {
         if (node != TNULL) {
             String str1 = inOrderHelper(node.getLeft());
@@ -26,13 +18,6 @@ public class RedBlackTree {
         return "";
     }
 
-/*    private void postOrderHelper(Node node) {
-        if (node != TNULL) {
-            postOrderHelper(node.getLeft());
-            postOrderHelper(node.getRight());
-            System.out.print(node.getData() + " ");
-        }
-    }*/
 
     private Node searchTreeHelper(Node node, int key) {
         if (node == TNULL || key == node.getData()) {
@@ -46,34 +31,19 @@ public class RedBlackTree {
         return searchTreeHelper(node.getRight(), key);
     }
 
-    // fix the rb tree modified by the delete operation
     private void fixDelete(Node x) {
         Node s;
         while (x != root && !x.getColor()) {
             if (x == x.getParent().getLeft()) {
                 s = x.getParent().getRight();
-//                if (s.getColor()) {
-//                    // case 3.1
-//                    s.setColor(false);
-//                    x.getParent().setColor(true);
-//                    leftRotate(x.getParent());
-//                    s = x.getParent().getRight();
-//                }
+
 
                 if (!s.getLeft().getColor() && !s.getRight().getColor()) {
-                    // case 3.2
                     s.setColor(true);
                     x = x.getParent();
                 } else {
-//                    if (!s.getRight().getColor()) {
-//                        // case 3.3
-//                        s.getLeft().setColor(false);
-//                        s.setColor(true);
-//                        rightRotate(s);
-//                        s = x.getParent().getRight();
-//                    }
 
-                    // case 3.4
+
                     s.setColor(x.getParent().getColor());
                     x.getParent().setColor(false);
                     s.getRight().setColor(false);
@@ -91,19 +61,11 @@ public class RedBlackTree {
                 }
 
                 if (!s.getRight().getColor()  && !s.getRight().getColor()) {
-                    // case 3.2
                     s.setColor(true);
                     x = x.getParent();
                 } else {
-//                    if (s.getLeft().getColor()) {
-//                        // case 3.3
-//                        s.getRight().setColor(false);
-//                        s.setColor(true);
-//                        leftRotate(s);
-//                        s = x.getParent().getLeft();
-//                    }
 
-                    // case 3.4
+
                     s.setColor( x.getParent().getColor());
                     x.getParent().setColor(false);
                     s.getLeft().setColor(false);
@@ -128,7 +90,6 @@ public class RedBlackTree {
     }
 
     private void deleteNodeHelper(Node node, int key) throws IllegalAccessException {
-        // find the node containing key
         Node z = TNULL;
         Node x, y;
         while (node != TNULL){
@@ -185,18 +146,15 @@ public class RedBlackTree {
             if (k.getParent() == k.getParent().getParent().getRight()) {
                 u = k.getParent().getParent().getLeft(); // uncle
                 if (u.getColor()) {
-                    // case 3.1
                     u.setColor(false);
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
                     k = k.getParent().getParent();
                 } else {
                     if (k == k.getParent().getLeft()) {
-                        // case 3.2.2
                         k = k.getParent();
                         rightRotate(k);
                     }
-                    // case 3.2.1
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
                     leftRotate(k.getParent().getParent());
@@ -205,18 +163,12 @@ public class RedBlackTree {
                 u = k.getParent().getParent().getRight(); // uncle
 
                 if (u.getColor()) {
-                    // mirror case 3.1
                     u.setColor(false);
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
                     k = k.getParent().getParent();
                 } else {
-//                    if (k == k.getParent().getRight()) {
-//                        // mirror case 3.2.2
-//                        k = k.getParent();
-//                        leftRotate(k);
-//                    }
-                    // mirror case 3.2.1
+
                     k.getParent().setColor(false);
                     k.getParent().getParent().setColor(true);
                     rightRotate(k.getParent().getParent());
@@ -230,7 +182,6 @@ public class RedBlackTree {
     }
 
     private void printHelper(Node root, String indent, boolean last) {
-        // print the tree structure on the screen
         if (root != TNULL) {
             System.out.print(indent);
             if (last) {
@@ -256,26 +207,11 @@ public class RedBlackTree {
         root = TNULL;
     }
 
-    // Pre-Order traversal
-    // Node.Left Subtree.Right Subtree
-/*    public void preorder() {
-        preOrderHelper(this.root);
-    }*/
 
-    // In-Order traversal
-    // Left Subtree . Node . Right Subtree
     public String inorder() {
         return inOrderHelper(this.root);
     }
 
-    // Post-Order traversal
-    // Left Subtree . Right Subtree . Node
-    /*public void postorder() {
-        postOrderHelper(this.root);
-    }*/
-
-    // search the tree for the key k
-    // and return the corresponding node
     public Node searchTree(int k) {
         return searchTreeHelper(this.root, k);
     }
@@ -288,52 +224,6 @@ public class RedBlackTree {
         return node;
     }
 
-    // find the node with the maximum key
-//    public Node maximum(Node node) {
-//        while (node.getRight() != TNULL) {
-//            node = node.getRight();
-//        }
-//        return node;
-//    }
-
-    // find the successor of a given node
-//    public Node successor(Node x) {
-//        // if the right subtree is not null,
-//        // the successor is the leftmost node in the
-//        // right subtree
-//        if (x.getRight() != TNULL) {
-//            return minimum(x.getRight());
-//        }
-//
-//        // else it is the lowest ancestor of x whose
-//        // left child is also an ancestor of x.
-//        Node y = x.getParent();
-//        while (y != TNULL && x == y.getRight()) {
-//            x = y;
-//            y = y.getParent();
-//        }
-//        return y;
-//    }
-
-//    // find the predecessor of a given node
-//    public Node predecessor(Node x) {
-//        // if the left subtree is not null,
-//        // the predecessor is the rightmost node in the
-//        // left subtree
-//        if (x.getLeft() != TNULL) {
-//            return maximum(x.getLeft());
-//        }
-//
-//        Node y = x.getParent();
-//        while (y != TNULL && x == y.getLeft()) {
-//            x = y;
-//            y = y.getParent();
-//        }
-//
-//        return y;
-//    }
-
-    // rotate left at node x
     public void leftRotate(Node x) {
         Node y = x.getRight();
         x.setRight(y.getLeft());
@@ -352,7 +242,6 @@ public class RedBlackTree {
         x.setParent(y);
     }
 
-    // rotate right at node x
     public void rightRotate(Node x) {
         Node y = x.getLeft();
         x.setLeft(y.getRight());
@@ -371,10 +260,7 @@ public class RedBlackTree {
         x.setParent(y);
     }
 
-    // insert the key to the tree in its appropriate position
-    // and fix the tree
     public void insert(int key) {
-        // Ordinary Binary Search Insertion
         Node node = new Node();
         node.setParent(null);
         node.setData(key);
@@ -394,7 +280,6 @@ public class RedBlackTree {
             }
         }
 
-        // y is parent of x
         node.setParent(y);
         if (y == null) {
             root = node;
@@ -404,18 +289,15 @@ public class RedBlackTree {
             y.setRight(node);
         }
 
-        // if new node is a root node, simply return
         if (node.getParent() == null){
             node.setColor(false);
             return;
         }
 
-        // if the grandparent is null, simply return
         if (node.getParent().getParent() == null) {
             return;
         }
 
-        // Fix the tree
         fixInsert(node);
     }
 
@@ -423,257 +305,12 @@ public class RedBlackTree {
         return this.root;
     }
 
-    // delete the node from the tree
     public void deleteNode(int data) throws IllegalAccessException {
         deleteNodeHelper(this.root, data);
     }
 
-    // print the tree structure on the screen
     public void prettyPrint() {
         printHelper(this.root, "", true);
     }
 
-
-/*    public static void main(String [] args) throws IllegalAccessException {
-        RedBlackTree bst = new RedBlackTree();
-        bst.insert(18);
-        bst.insert(5);
-        bst.insert(15);
-        bst.insert(17);
-        bst.insert(25);
-        bst.insert(40);
-        bst.insert(80);
-        bst.insert(80);
-        bst.deleteNode(25);
-        Node node = bst.searchTree(9);
-        System.out.println(bst.getTNULL() == node);
-        System.out.println("НОДААААААА!!" + node.getData());
-        System.out.println(bst.inorder());
-    }*/
-
-//
-//    private void rotate_left(Node node) {
-//        Node pivot = node.getRight();
-//
-//        pivot.setParent(node.getParent()); /* при этом, возможно, pivot становится корнем дерева */
-//        if (node.getParent() != null) {
-//            if (node.getParent().getLeft() == node)
-//                node.getParent().setLeft(pivot);
-//            else
-//                node.getParent().setRight(pivot);
-//        }
-//
-//        node.setRight(pivot.getLeft());
-//        if (pivot.getLeft() != null)
-//            pivot.getLeft().setParent(node);
-//
-//        node.setParent(pivot);
-//        pivot.setLeft(node);
-//    }
-//
-//    private void rotate_right(Node node) {
-//        Node pivot = node.getLeft();
-//
-//        pivot.setParent(node.getParent()); /* при этом, возможно, pivot становится корнем дерева */
-//        if (node.getParent() != null) {
-//            if (node.getParent().getLeft() == node)
-//                node.getParent().setLeft(pivot);
-//            else
-//                node.getParent().setRight(pivot);
-//        }
-//
-//        node.setLeft(pivot.getRight());
-//        if (pivot.getRight() != null)
-//            pivot.getRight().setParent(node);
-//
-//        node.setParent(pivot);
-//        pivot.setRight(node);
-//    }
-//
-//    public void insert_case1(Node node) {
-//        if (node.getParent() == null)
-//            node.setColor(NodeColor.BLACK);
-//        else
-//            insert_case2(node);
-//    }
-//
-//    private void insert_case2(Node node) {
-//        if (node.getParent().getColor() == NodeColor.BLACK)
-//            return; /* Tree is still valid */
-//        else
-//            insert_case3(node);
-//    }
-//
-//    private void insert_case3(Node node) {
-//        Node uncle = node.getUncle();
-//        Node grandparent = null;
-//
-//        if ((uncle != null) && (uncle.getColor() == NodeColor.RED)) {
-//            // && (node.getParent().getColor() == NodeColor.RED) Второе условие проверяется в insert_case2, то есть родитель уже является красным.
-//            node.getParent().setColor(NodeColor.BLACK);
-//            uncle.setColor(NodeColor.BLACK);
-//            grandparent = node.getGrandparent();
-//            grandparent.setColor(NodeColor.RED);
-//            insert_case1(grandparent);
-//        } else {
-//            insert_case4(node);
-//        }
-//    }
-//
-//    private void insert_case4(Node node) {
-//        Node grandparent = node.getGrandparent();
-//
-//        if ((node == node.getParent().getRight()) && (node.getParent() == grandparent.getLeft())) {
-//            rotate_left(node.getParent());
-//            node = node.getLeft();
-//
-//        } else if ((node == node.getParent().getLeft()) && (node.getParent() == grandparent.getRight())) {
-//            rotate_right(node.getParent());
-//            node = node.getRight();
-//
-//        }
-//        insert_case5(node);
-//    }
-//
-//    private void insert_case5(Node node) {
-//        Node grandparent = node.getGrandparent();
-//
-//        node.getParent().setColor(NodeColor.BLACK);
-//        grandparent.setColor(NodeColor.RED);
-//        if ((node == node.getParent().getLeft()) && (node.getParent() == grandparent.getLeft())) {
-//            rotate_right(grandparent);
-//        } else {
-//            rotate_left(grandparent);
-//        }
-//    }
-//
-//    private void replace_node(Node node, Node child) {
-//        child.setParent(node.getParent());
-//        if (node == node.getParent().getLeft())
-//            node.getParent().setLeft(child);
-//        else
-//            node.getParent().setRight(child);
-//    }
-//
-//    public void delete_one_child(Node node) {
-//        /*
-//         * Условие: n имеет не более одного ненулевого потомка.
-//         */
-//        Node child;
-//        if (node.getRight() != null) {
-//            child = node.getRight();
-//        } else {
-//            child = node.getLeft();
-//        }
-//
-//        replace_node(node, child);
-//        if (node.getColor() == NodeColor.BLACK) {
-//            if (child.getColor() == NodeColor.RED)
-//                child.setColor(NodeColor.BLACK);
-//            else
-//                delete_case1(child);
-//        }
-//    }
-//
-//    private void delete_case1(Node node) {
-//        if (node.getParent() != null)
-//            delete_case2(node);
-//    }
-//
-//    private void delete_case2(Node node) {
-//        Node sibling = node.getSibling();
-//
-//        if (sibling.getColor() == NodeColor.RED) {
-//            node.getParent().setColor(NodeColor.RED);
-//            sibling.setColor(NodeColor.BLACK);
-//            if (node == node.getParent().getLeft())
-//                rotate_left(node.getParent());
-//            else
-//                rotate_right(node.getParent());
-//        }
-//        delete_case3(node);
-//    }
-//
-//    private void delete_case3(Node node) {
-//        Node sibling = node.getSibling();
-//
-//        if (
-//                (node.getParent().getColor() == NodeColor.BLACK) &&
-//                        (sibling.getColor() == NodeColor.BLACK) &&
-//                        (sibling.getLeft().getColor() == NodeColor.BLACK) &&
-//                        (sibling.getRight().getColor() == NodeColor.BLACK)
-//        ) {
-//            sibling.setColor(NodeColor.RED);
-//            delete_case1(node.getParent());
-//        } else
-//            delete_case4(node);
-//    }
-//
-//    private void delete_case4(Node node) {
-//        Node sibling = node.getSibling();
-//
-//        if (
-//                (node.getParent().getColor() == NodeColor.RED) &&
-//                        (sibling.getColor() == NodeColor.BLACK) &&
-//                        (sibling.getLeft().getColor() == NodeColor.BLACK) &&
-//                        (sibling.getRight().getColor() == NodeColor.BLACK)
-//        ) {
-//            sibling.setColor(NodeColor.RED);
-//            node.getParent().setColor(NodeColor.BLACK);
-//        } else
-//            delete_case5(node);
-//    }
-//
-//    private void delete_case5(Node node) {
-//        Node sibling = node.getSibling();
-//
-//        if (sibling.getColor() == NodeColor.BLACK) {
-//            if (
-//                    (node == node.getParent().getLeft()) &&
-//                            (sibling.getRight().getColor() == NodeColor.BLACK) &&
-//                            (sibling.getLeft().getColor() == NodeColor.RED)
-//            ) {
-//                sibling.setColor(NodeColor.RED);
-//                sibling.getLeft().setColor(NodeColor.BLACK);
-//                rotate_right(sibling);
-//            } else if (
-//                    (node == node.getParent().getRight()) &&
-//                            (sibling.getLeft().getColor() == NodeColor.BLACK) &&
-//                            (sibling.getRight().getColor() == NodeColor.RED)
-//            ) {
-//                sibling.setColor(NodeColor.RED);
-//                sibling.getRight().setColor(NodeColor.BLACK);
-//                rotate_left(sibling);
-//            }
-//        }
-//        delete_case6(node);
-//    }
-//
-//    private void delete_case6(Node node)
-//    {
-//        Node sibling = node.getSibling();
-//
-//        sibling.setColor(node.getParent().getColor());
-//        node.getParent().setColor(NodeColor.BLACK);
-//
-//        if (node == node.getParent().getLeft()) {
-//            sibling.getRight().setColor(NodeColor.BLACK);
-//            rotate_left(node.getParent());
-//        } else {
-//            sibling.getLeft().setColor(NodeColor.BLACK);
-//            rotate_right(node.getParent());
-//        }
-//    }
-//
-//    private void inOrderHelper(Node node) {
-//        if (node != null) {
-//            inOrderHelper(node.getLeft());
-//            System.out.print(node.getData() + " ");
-//            inOrderHelper(node.getRight());
-//        }
-//    }
-//
-//    public void inorder(Node node) {
-//        inOrderHelper(node);
-//    }
 }
