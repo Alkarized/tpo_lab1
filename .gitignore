@@ -26,3 +26,8 @@ hs_err_pid*
 *.iml
 DomainModelMVN/target
 htmlReport
+build
+gradlew
+gradle
+.gradle
+gradlew.bat
