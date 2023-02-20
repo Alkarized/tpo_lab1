@@ -1,18 +1,16 @@
 package task3.implementations;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import task3.abstractions.INamed;
 import task3.enums.IdeaContent;
 import task3.enums.Material;
 import task3.enums.State;
-import task3.implementations.Door;
-import task3.implementations.Robot;
 import task3.implementations.idea.Idea;
 import task3.implementations.idea.TargetedIdea;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-public class RobotTest {
+class RobotTest {
 
     Robot notZeroSchemas;
     Robot zeroSchemas;

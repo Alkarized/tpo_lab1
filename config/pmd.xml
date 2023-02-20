@@ -65,6 +65,7 @@
         <exclude name="CognitiveComplexity"/>
         <exclude name="CyclomaticComplexity"/>
         <exclude name="NPathComplexity"/>
+        <exclude name="GodClass"/>
     </rule>
 
     <rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod">
