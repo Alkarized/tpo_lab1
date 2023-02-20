@@ -86,4 +86,23 @@ public class TreeTest {
         Assertions.assertEquals(input, rbt.searchTree(input).getData());
 
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {421, 1, -42, 0})
+    public void simpleDeleteOneElementTest(Integer input) throws IllegalAccessException {
+        rbt.insert(input);
+        rbt.deleteNode(input);
+
+        Assertions.assertEquals(rbt.searchTree(input), rbt.getTNULL());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {421, 1, -42, 0})
+    public void simpleDeleteOneElementInTwosSameTest(Integer input) throws IllegalAccessException {
+        rbt.insert(input);
+        rbt.insert(input);
+        rbt.deleteNode(input);
+
+        Assertions.assertEquals(rbt.searchTree(input).getData(), input);
+    }
 }
