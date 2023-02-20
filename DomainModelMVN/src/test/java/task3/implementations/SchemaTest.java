@@ -1,8 +1,7 @@
 package task3.implementations;
 
-import task3.Enums.Material;
-import task3.Enums.State;
-import task3.Implementations.Schema;
+import task3.enums.Material;
+import task3.enums.State;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

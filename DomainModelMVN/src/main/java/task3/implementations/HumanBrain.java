@@ -1,7 +1,7 @@
-package task3.Implementations;
+package task3.implementations;
 
-import task3.Abstractions.IMaterialized;
-import task3.Enums.Material;
+import task3.abstractions.IMaterialized;
+import task3.enums.Material;
 
 public class HumanBrain implements IMaterialized {
 

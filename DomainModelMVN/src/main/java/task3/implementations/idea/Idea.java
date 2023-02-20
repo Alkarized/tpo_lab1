@@ -1,7 +1,7 @@
-package task3.Implementations.Idea;
+package task3.implementations.idea;
 
-import task3.Abstractions.ITargetable;
-import task3.Enums.IdeaContent;
+import task3.abstractions.ITargetable;
+import task3.enums.IdeaContent;
 
 public class Idea implements ITargetable {
     private final IdeaContent content;

@@ -1,12 +1,12 @@
 package task3;
 
-import task3.Abstractions.INamed;
-import task3.Enums.IdeaContent;
-import task3.Enums.Material;
-import task3.Enums.State;
-import task3.Implementations.Door;
-import task3.Implementations.Robot;
-import task3.Implementations.Idea.TargetedIdea;
+import task3.abstractions.INamed;
+import task3.enums.IdeaContent;
+import task3.enums.Material;
+import task3.enums.State;
+import task3.implementations.Door;
+import task3.implementations.Robot;
+import task3.implementations.idea.TargetedIdea;
 
 public class Main {
     public static void main(String[] args) {
