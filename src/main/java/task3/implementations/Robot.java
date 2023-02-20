@@ -15,7 +15,7 @@ public class Robot implements INamed, IMaterialized {
     private final Schema[] logicalSchemas;
     private State currentState;
 
-    public Robot(String name, int numOfSchemas) {
+    public Robot(final String name, final int numOfSchemas) {
         this.name = name;
         this.currentState = State.DEFAULT;
         this.logicalSchemas = new Schema[numOfSchemas];
@@ -24,6 +24,7 @@ public class Robot implements INamed, IMaterialized {
         }
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
@@ -32,15 +33,15 @@ public class Robot implements INamed, IMaterialized {
         return currentState;
     }
 
-    public State watch(ITargetable target) {
-        if (target.getTargetName().equals("She")) {
+    public State watch(final ITargetable target) {
+        if ("She".equals(target.getTargetName())) {
             this.currentState = State.COLD_CONTEMPT;
         }
         System.out.printf("[%s], being in state of [%s], watched after [%s].\n", this.getTargetName(), this.currentState, target.getTargetName());
         return this.currentState;
     }
 
-    public State useSchemas(Idea idea) {
+    public State useSchemas(final Idea idea) {
         if (this.logicalSchemas.length == 0) {
             return this.currentState;
         }
@@ -48,31 +49,31 @@ public class Robot implements INamed, IMaterialized {
             return this.currentState;
         }
         if (idea.getContent() == IdeaContent.PHYSICAL_ABUSE) {
-            State currState;
-            for (Schema schema : this.logicalSchemas) {
-                currState = schema.chirp();
+            for (final Schema schema : this.logicalSchemas) {
+                schema.chirp();
             }
-            for (Schema schema : this.logicalSchemas) {
+            for (final Schema schema : this.logicalSchemas) {
                 schema.manipulate(idea);
             }
-            for (Schema schema : this.logicalSchemas) {
-                currState = schema.click();
+            for (final Schema schema : this.logicalSchemas) {
+                schema.click();
             }
-            for (Schema schema : this.logicalSchemas) {
+            for (final Schema schema : this.logicalSchemas) {
                 schema.speak();
             }
             if (!(idea instanceof TargetedIdea && ((TargetedIdea) idea).getTarget() instanceof IMaterialized)) {
                 this.currentState = this.logicalSchemas[0].getCurrentState();
                 return this.currentState;
             }
-            for (Schema schema : this.logicalSchemas) {
-                currState = schema.compareMaterials(((IMaterialized) ((TargetedIdea) idea).getTarget()).getMaterial(), new HumanBrain().getMaterial());
+            final HumanBrain brain = new HumanBrain();
+            for (final Schema schema : this.logicalSchemas) {
+                schema.compareMaterials(((IMaterialized) ((TargetedIdea) idea).getTarget()).getMaterial(), brain.getMaterial());
             }
-            for (Schema schema : this.logicalSchemas) {
-                currState = schema.checkHydrogen();
+            for (final Schema schema : this.logicalSchemas) {
+                schema.checkHydrogen();
             }
-            for (Schema schema : this.logicalSchemas) {
-                currState = schema.turnOff();
+            for (final Schema schema : this.logicalSchemas) {
+                schema.turnOff();
             }
 
             this.currentState = State.DESPAIR;

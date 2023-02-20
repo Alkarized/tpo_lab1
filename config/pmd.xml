@@ -9,6 +9,7 @@
         <exclude name="JUnitTestContainsTooManyAsserts"/>
         <exclude name="JUnitAssertionsShouldIncludeMessage"/>
         <exclude name="GuardLogStatement"/>
+        <exclude name="SystemPrintln"/>
     </rule>
 
     <rule ref="category/java/bestpractices.xml/AbstractClassWithoutAbstractMethod">
@@ -23,6 +24,7 @@
         <exclude name="CommentDefaultAccessModifier"/>
         <exclude name="LongVariable"/>
         <exclude name="ShortVariable"/>
+        <exclude name="ShortClassName"/>
     </rule>
 
     <rule ref="category/java/codestyle.xml/ClassNamingConventions">
@@ -58,6 +60,9 @@
         <exclude name="ClassWithOnlyPrivateConstructorsShouldBeFinal"/>
         <exclude name="DataClass"/>
         <exclude name="TooManyMethods"/>
+        <exclude name="CognitiveComplexity"/>
+        <exclude name="CyclomaticComplexity"/>
+        <exclude name="NPathComplexity"/>
     </rule>
 
     <rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod">

@@ -7,7 +7,7 @@ public class TargetedIdea extends Idea{
 
     private final ITargetable target;
 
-    public TargetedIdea(IdeaContent content, ITargetable target) {
+    public TargetedIdea(final IdeaContent content, final ITargetable target) {
         super(content);
         this.target = target;
     }

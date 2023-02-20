@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class Schema implements IMaterialized {
     private State currentState;
-    private ITargetable lastManipulatedObject = null;
+    private ITargetable lastManipulatedObject;
 
     private String message;
 
@@ -21,7 +21,7 @@ public class Schema implements IMaterialized {
         return this.currentState;
     }
 
-    private void setCurrentState(State currentState) {
+    private void setCurrentState(final State currentState) {
         this.currentState = currentState;
         switch (this.currentState) {
             case DOUBT -> message = "Is it worth it?";
@@ -42,7 +42,7 @@ public class Schema implements IMaterialized {
         return this.currentState;
     }
 
-    public void manipulate(ITargetable target) {
+    public void manipulate(final ITargetable target) {
         this.lastManipulatedObject = target;
         System.out.printf("[%s], manipulated the [%s].\n", this.getTargetName(), this.lastManipulatedObject.getTargetName());
     }
@@ -59,7 +59,7 @@ public class Schema implements IMaterialized {
         System.out.printf("[%s]: \"%s\"\n", this.getTargetName(), this.message);
     }
 
-    public State compareMaterials(Material first, Material second) {
+    public State compareMaterials(final Material first, final Material second) {
         if (Objects.requireNonNull(this.currentState) == State.DOUBT) {
             setCurrentState(State.FUN);
         }

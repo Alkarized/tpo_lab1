@@ -6,7 +6,7 @@ import task3.enums.IdeaContent;
 public class Idea implements ITargetable {
     private final IdeaContent content;
 
-    public Idea(IdeaContent content) {
+    public Idea(final IdeaContent content) {
         this.content = content;
     }
 

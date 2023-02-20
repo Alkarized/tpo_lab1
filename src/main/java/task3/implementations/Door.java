@@ -7,10 +7,11 @@ public class Door implements IMaterialized {
 
     private final Material material;
 
-    public Door(Material material) {
+    public Door(final Material material) {
         this.material = material;
     }
 
+    @Override
     public Material getMaterial() {
         return material;
     }
