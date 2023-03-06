@@ -5,8 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import task2.Node;
-import task2.RedBlackTree;
 
 public class TreeTest {
 
@@ -40,7 +38,7 @@ public class TreeTest {
 
     @Test
     public void zeroElementTest() {
-        Node node = rbt.getTNULL();
+        Node node = rbt.gettNULL();
         Node root = rbt.getRoot();
         Assertions.assertEquals(node, root);
     }
@@ -94,7 +92,7 @@ public class TreeTest {
         rbt.insert(input);
         rbt.deleteNode(input);
 
-        Assertions.assertEquals(rbt.searchTree(input), rbt.getTNULL());
+        Assertions.assertEquals(rbt.searchTree(input), rbt.gettNULL());
     }
 
     @ParameterizedTest
@@ -127,7 +125,7 @@ public class TreeTest {
         rbt.prettyPrint();
         System.out.println(rbt.inorder());
 
-        Assertions.assertEquals(rbt.searchTree(input), rbt.getTNULL());
+        Assertions.assertEquals(rbt.searchTree(input), rbt.gettNULL());
 
     }
 }
