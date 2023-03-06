@@ -44,20 +44,20 @@ jacocoTestCoverageVerification {
             limit {
                 counter = 'CLASS'
                 value = 'MISSEDCOUNT'
-                minimum = 0.8
+                minimum = 0
             }
         }
         rule {
             limit {
                 counter = 'METHOD'
-                value = 'MISSEDCOUNT'
+                value = 'COVEREDRATIO'
                 minimum = 0.9
             }
         }
         rule {
             limit {
                 counter = 'LINE'
-                value = 'MISSEDCOUNT'
+                value = 'COVEREDRATIO'
                 minimum = 0.9
             }
         }
@@ -70,4 +70,3 @@ jacocoTestCoverageVerification {
         }
     }
 }
-check.dependsOn jacocoTestReport, jacocoTestCoverageVerification

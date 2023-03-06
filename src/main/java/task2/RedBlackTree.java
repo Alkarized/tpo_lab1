@@ -8,10 +8,10 @@ public class RedBlackTree {
         return tNULL;
     }
 
-    private String inOrderHelper(Node node) {
-        if (node != tNULL) {
-            String str1 = inOrderHelper(node.getLeft());
-            String str2 = node.getData() + " ";
+    private String inOrderHelper(final Node node) {
+        if (!node.equals(tNULL)) {
+            final String str1 = inOrderHelper(node.getLeft());
+            final String str2 = node.getData() + " ";
             final String str3 = inOrderHelper(node.getRight());
             return str1 + str2 + str3;
         }
@@ -20,7 +20,7 @@ public class RedBlackTree {
 
 
     private Node searchTreeHelper(final Node node, final int key) {
-        if (node == tNULL || key == node.getData()) {
+        if (node.equals(tNULL) || key == node.getData()) {
             return node;
         }
 
@@ -60,13 +60,13 @@ public class RedBlackTree {
                     s = x.getParent().getLeft();
                 }
 
-                if (!s.getRight().isColor()  && !s.getRight().isColor()) {
+                if (!s.getRight().isColor() && !s.getRight().isColor()) {
                     s.setColor(true);
                     x = x.getParent();
                 } else {
 
 
-                    s.setColor( x.getParent().isColor());
+                    s.setColor(x.getParent().isColor());
                     x.getParent().setColor(false);
                     s.getLeft().setColor(false);
                     rightRotate(x.getParent());
@@ -78,10 +78,10 @@ public class RedBlackTree {
     }
 
 
-    private void rbTransplant(final Node u, final Node v){
+    private void rbTransplant(final Node u, final Node v) {
         if (u.getParent() == null) {
             root = v;
-        } else if (u.equals(u.getParent().getLeft())){
+        } else if (u.equals(u.getParent().getLeft())) {
             u.getParent().setLeft(v);
         } else {
             u.getParent().setRight(v);
@@ -92,7 +92,8 @@ public class RedBlackTree {
     private void deleteNodeHelper(Node node, final int key) throws IllegalAccessException {
         Node z = tNULL;
 
-        while (node != tNULL){
+        while (!node.equals(tNULL)){
+
             if (node.getData() == key) {
                 z = node;
             }
@@ -104,17 +105,16 @@ public class RedBlackTree {
             }
         }
 
-        if (z == tNULL) {
+        if (z.equals(tNULL)) {
             throw new IllegalAccessException("Couldn't find key in the tree");
-
         }
         Node x;
         Node y = z;
         boolean yOriginalColor = y.isColor();
-        if (z.getLeft() == tNULL) {
+        if (z.getLeft().equals(tNULL)) {
             x = z.getRight();
             rbTransplant(z, z.getRight());
-        } else if (z.getRight() == tNULL) {
+        } else if (z.getRight().equals(tNULL)) {
             x = z.getLeft();
             rbTransplant(z, z.getLeft());
         } else {
@@ -134,13 +134,13 @@ public class RedBlackTree {
             y.getLeft().setParent(y);
             y.setColor(z.isColor());
         }
-        if (!yOriginalColor){
+        if (!yOriginalColor) {
             fixDelete(x);
         }
     }
 
     // fix the red-black tree
-    private void fixInsert(Node k){
+    private void fixInsert(Node k) {
         Node u;
         while (k.getParent().isColor()) {
             if (k.getParent().equals(k.getParent().getParent().getRight())) {
@@ -182,7 +182,7 @@ public class RedBlackTree {
     }
 
     private void printHelper(final Node root, String indent, final boolean last) {
-        if (root != tNULL) {
+        if (!root.equals(tNULL)) {
             System.out.print(indent);
             if (last) {
                 System.out.print("R----");
@@ -192,7 +192,7 @@ public class RedBlackTree {
                 indent += "|    ";
             }
 
-            final String sColor = root.isColor()?"RED":"BLACK";
+            final String sColor = root.isColor() ? "RED" : "BLACK";
             System.out.println(root.getData() + "(" + sColor + ")");
             printHelper(root.getLeft(), indent, false);
             printHelper(root.getRight(), indent, true);
@@ -218,7 +218,7 @@ public class RedBlackTree {
 
     // find the node with the minimum key
     public Node minimum(Node node) {
-        while (node.getLeft() != tNULL) {
+        while (!node.getLeft().equals(tNULL)) {
             node = node.getLeft();
         }
         return node;
@@ -227,7 +227,7 @@ public class RedBlackTree {
     public void leftRotate(final Node x) {
         final Node y = x.getRight();
         x.setRight(y.getLeft());
-        if (y.getLeft() != tNULL) {
+        if (!y.getLeft().equals(tNULL)) {
             y.getLeft().setParent(x);
         }
         y.setParent(x.getParent());
@@ -245,7 +245,7 @@ public class RedBlackTree {
     public void rightRotate(final Node x) {
         final Node y = x.getLeft();
         x.setLeft(y.getRight());
-        if (y.getRight() != tNULL) {
+        if (!y.getRight().equals(tNULL)) {
             y.getRight().setParent(x);
         }
         y.setParent(x.getParent());
@@ -271,7 +271,7 @@ public class RedBlackTree {
         Node y = null;
         Node x = this.root;
 
-        while (x != tNULL) {
+        while (!x.equals(tNULL)) {
             y = x;
             if (node.getData() < x.getData()) {
                 x = x.getLeft();
@@ -289,7 +289,7 @@ public class RedBlackTree {
             y.setRight(node);
         }
 
-        if (node.getParent() == null){
+        if (node.getParent() == null) {
             node.setColor(false);
             return;
         }
@@ -301,7 +301,7 @@ public class RedBlackTree {
         fixInsert(node);
     }
 
-    public Node getRoot(){
+    public Node getRoot() {
         return this.root;
     }
 

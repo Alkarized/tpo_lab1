@@ -5,9 +5,8 @@ import task3.enums.State;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import task3.implementations.Schema;
 
-public class SchemaTest {
+class SchemaTest {
 
     Schema schema;
 
